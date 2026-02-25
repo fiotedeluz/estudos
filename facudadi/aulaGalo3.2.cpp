@@ -18,7 +18,7 @@ int main () {
 	scanf("%d", &idade[2]);
 	
 	media = (idade[0] + idade[1] + idade[2] / 3);
-	printf ("a media é: %f", media);
+	printf ("a media Ã©: %f", media);
 	
 return 0;	
 }
