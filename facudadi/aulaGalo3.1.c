@@ -14,7 +14,7 @@ int main () {
 	//printf ("voce quer ver 1 ou 2");
 	//scanf ("%d",&opt);
 	
-	//printf ("a ordem original dos nomes é\n 1- %s\n", n1e2[0]);
+	//printf ("a ordem original dos nomes Ã©\n 1- %s\n", n1e2[0]);
 	//printf ("2- %s\n", n1e2[1]);
 	
 	printf ("escreva o primeiro nome\n");
@@ -23,15 +23,15 @@ int main () {
 	printf ("escreva o segundo nome\n");
 	scanf ("%s", &nome[1]);
 	
-	printf ("o primeiro nome é %s\n",nome[0]);
-	printf ("o segundo nome é %s\n",nome[1]);
+	printf ("o primeiro nome Ã© %s\n",nome[0]);
+	printf ("o segundo nome Ã© %s\n",nome[1]);
 	
 	strcpy (aux,nome[0]);
 	strcpy (nome[0],nome[1]);
 	strcpy (nome[1],aux);
 
-	printf ("o segundo nome é %s\n",nome[0]);
-	printf ("o primeiro nome é %s\n",nome[1]);
+	printf ("o segundo nome Ã© %s\n",nome[0]);
+	printf ("o primeiro nome Ã© %s\n",nome[1]);
 
 
 	
