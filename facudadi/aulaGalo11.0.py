@@ -19,3 +19,10 @@
 #    print(f"minha primeira função aprendida na disiplina {dic}, no curso de {cur}")
 #
 #imprimir_mensagem("PY", "ADS")
+
+#variavel com return ao invez de print para associar valor e exemplificar o resultado de uma função
+#def imprimir_mensagem(dic, cur):
+#    return(f"minha primeira função aprendida na disiplina {dic}, no curso de {cur}")
+#
+#imprimir_mensagem("PY", "ADS")
+
