@@ -26,3 +26,8 @@
 #
 #imprimir_mensagem("PY", "ADS")
 
+#def soma(nm1, nm2):
+#    return(nm1 + nm2)
+
+#result = soma(1, 2)
+#print (result)
