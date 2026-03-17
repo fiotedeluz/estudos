@@ -7,8 +7,8 @@ int main() {
 	printf ("digite um numeros \n");
 	scanf ("%d", &a);
 	
-	if (a % 2 == 0) { printf ("%d é par", a);
-	} else { printf ("%d é impar", a);
+	if (a % 2 == 0) { printf ("%d Ã© par", a);
+	} else { printf ("%d Ã© impar", a);
 	}
 	
 	
