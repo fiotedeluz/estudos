@@ -41,7 +41,7 @@ int main () {
 	
 	
 //	float anual = SALARIOMINIMO * 12;
-//	printf ("o salario anual é R$ %.2f\n" anual);
+//	printf ("o salario anual Ã© R$ %.2f\n" anual);
 	
 	return 0;
 }
