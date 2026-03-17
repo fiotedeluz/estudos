@@ -5,7 +5,7 @@
 int main () {
 	setlocale (LC_ALL, "");
 	int  numeros [4] = {1,2,3,4};
-	printf ("o numero é %d", numeros[2]);
+	printf ("o numero Ã© %d", numeros[2]);
 	
 	return 0;
 }
