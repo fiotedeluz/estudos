@@ -13,7 +13,7 @@ int main() {
 	    case 2: printf("Extrato\n"); break;
 	    case 3: printf("Saque\n"); break;
 	    case 4: printf("Sair\n"); break;
-	    default: printf("Opção inválida\n");
+	    default: printf("OpÃ§Ã£o invÃ¡lida\n");
 	}	
 	return 0;
 }
