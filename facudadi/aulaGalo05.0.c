@@ -6,7 +6,7 @@ int main() {
 	
 	float o;
 	
-	printf ("digite o orçamento da viagem: \n");
+	printf ("digite o orÃ§amento da viagem: \n");
 	scanf ("%f", &o);
 	
 	if (o >= 1000) {printf ("viagem internacional, yei");
