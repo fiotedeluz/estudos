@@ -9,7 +9,7 @@ int main() {
 	float valor = 20;
 	float tolta, desconto;
 	
-	printf ("Digite sua Idade menó\n"); 
+	printf ("Digite sua Idade menÃ³\n"); 
 	scanf ("%d",&i);
 	
 	printf ("you is Studin?, Digite 1 para (sim) e 2 para (nao) \n"); 
