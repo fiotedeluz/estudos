@@ -12,7 +12,7 @@ int main() {
     if (nota >= 60) {
         printf("Aprovado\n");
     } else if (nota >= 50) {
-        printf("Em recuperação\n");
+        printf("Em recuperaÃ§Ã£o\n");
     } else {
         printf("Reprovado\n");
     }
