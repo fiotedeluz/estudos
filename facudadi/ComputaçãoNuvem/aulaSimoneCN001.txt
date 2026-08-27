@@ -1,5 +1,6 @@
 resumo da aula de Computação em nuvem na faculdade, aula 26/set/2026
 
+segue o registro do killacode
 root@ubuntu:~$  pwd
 /root
 root@ubuntu:~$ whoami
