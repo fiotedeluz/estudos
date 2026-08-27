@@ -1,0 +1,85 @@
+resumo da aula de Sistemas Distribuídos 26/set/26
+
+
+questões
+
+atividade 1:
+1A:
+teste: ping google.com
+1. Qual endereço IP apareceu?
+172.217.172.46
+
+2. Quantos pacotes foram enviados?
+4
+
+3. Quantos foram recebidos?
+4
+
+4. Houve perda de pacotes?
+não
+
+5. Qual foi aproximadamente o tempo de resposta?
+5ms
+
+1B:
+teste:
+nslookup google.com
+
+"""
+Servidor:  UnKnown
+Address:  172.31.32.236
+
+Não é resposta autoritativa:
+Nome:    google.com
+Addresses:  2800:3f0:4001:80e::200e
+          172.217.172.46
+
+"""
+nslookup youtube.com
+"""
+Servidor:  UnKnown
+Address:  172.31.32.236
+
+Não é resposta autoritativa:
+Nome:    youtube.com
+Addresses:  2800:3f0:4001:839::200e
+          172.217.29.238
+"""
+
+1C:
+
+teste:
+tracert google.com
+"""
+Rastreando a rota para google.com [172.217.172.46]
+com no máximo 30 saltos:
+
+  1    <1 ms    <1 ms     1 ms  10.15.0.2
+  2     1 ms     1 ms     1 ms  192.168.1.1
+  3     1 ms     2 ms     2 ms  10.1.6.0
+  4     2 ms     2 ms     2 ms  172.21.0.69
+  5     2 ms     2 ms     2 ms  172.19.0.77
+  6     3 ms     2 ms     2 ms  172.19.1.20
+  7     3 ms     2 ms     1 ms  172.19.1.17
+  8    29 ms     9 ms     *     172.29.8.65
+  9     4 ms     4 ms     4 ms  142.250.165.91
+ 10     4 ms     3 ms     4 ms  142.250.209.5
+ 11     8 ms     7 ms     8 ms  192.178.253.73
+ 12     8 ms     7 ms     7 ms  pngrub-an-in-f14.1e100.net [172.217.172.46]
+
+Rastreamento concluído.
+"""
+1. 12
+2. Sim
+3. Sim o oitavo salto tem uma *
+4. não, acredito que tenham ocorrido pelo menos 10 etapas entre nos 
+
+Atividade 2
+
+passo 1:
+python --version
+"""
+Python 3.13.7
+"""
+
+passo 2:
