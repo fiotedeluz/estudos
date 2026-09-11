@@ -1,15 +1,15 @@
 Cenário 1: Transferência de um arquivo de trabalho
 Protocolo ideal: TCP
-A transferência de arquivos exige integridade dos dados. Se um único pacote for perdido ou corrompido, o arquivo pode ficar inutilizável.
+pois é uma transferencia de trabalho exige maior segurança e garantia da entrega integra dos dados
 
 Cenário 2: Sistema de videoconferência
 Protocolo ideal: UDP
-Aplicações de transmissão em tempo real exigem baixa latência.
+pois precisa ser uma comunicação imediata mesmo que coisas sejam ignoradas
 
 Cenário 3: Sistema financeiro enviando uma operação crítica
 Protocolo ideal: TCP
-Transações financeiras não toleram nenhum tipo de erro ou perda de dados. O TCP oferece essa segurança por meio de conexões monitoradas.
+essas transações não podem permitir nenhum erro, preferindo por vezes ate a interrupção total que uma intrega incorreta ou avariada
 
 Cenário 4: Jogo on-line enviando continuamente a posição dos jogadores
 Protocolo ideal: UDP
-O uso do TCP causaria atrasos (lag) artificiais no jogo tentando recuperar dados que já ficaram obsoletos.
+o tcp perderia tempo recuperando as posições anteriores, então o simplesmente mantem a posição mais atualizada 
