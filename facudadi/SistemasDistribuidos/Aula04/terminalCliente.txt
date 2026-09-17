@@ -17,3 +17,10 @@ PS C:\Users\aluno\Downloads\aula\aula4> python .\cliente-rpc.py
 10 - 5 = 5
 10 x 5 = 50
 PS C:\Users\aluno\Downloads\aula\aula4>
+PS C:\Users\aluno\Downloads\aula\aula4> python .\cliente-rpc.py
+10 + 5 = 15
+10 - 5 = 5
+10 x 5 = 50
+10 / 2 = 5.0
+10 / 0 = Erro: divisão por zero
+PS C:\Users\aluno\Downloads\aula\aula4>
