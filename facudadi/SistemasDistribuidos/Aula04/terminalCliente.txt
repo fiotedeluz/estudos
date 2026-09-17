@@ -24,3 +24,18 @@ PS C:\Users\aluno\Downloads\aula\aula4> python .\cliente-rpc.py
 10 / 2 = 5.0
 10 / 0 = Erro: divisão por zero
 PS C:\Users\aluno\Downloads\aula\aula4>
+PS C:\Users\aluno\Downloads\aula\aula4> python .\cliente-rpc.py
+10 + 5 = 15
+10 - 5 = 5
+10 x 5 = 50
+10 / 2 = 5.0
+10 / 0 = Erro: divisão por zero
+Digite o primeiro valor: 22
+Digite o segundo valor: 10
+1 - Somar
+2 - Subtrair
+3 - Multiplicar
+4 - Dividir
+Escolha: 1
+Resultado: 32.0
+PS C:\Users\aluno\Downloads\aula\aula4>
