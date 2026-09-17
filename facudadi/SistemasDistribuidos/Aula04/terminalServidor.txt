@@ -12,3 +12,9 @@ Mode                 LastWriteTime         Length Name
 
 
 PS C:\Users\aluno\Downloads\aula\aula4>
+PS C:\Users\aluno\Downloads\aula\aula4> python .\servidor-rpc.py
+127.0.0.1 - - [16/Sep/2026 21:53:57] "POST / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Sep/2026 21:53:59] "POST / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Sep/2026 21:54:01] "POST / HTTP/1.1" 200 -
+
+
