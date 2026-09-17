@@ -26,3 +26,13 @@ PS C:\Users\aluno\Downloads\aula\aula4> python .\servidor-rpc.py
 127.0.0.1 - - [16/Sep/2026 22:04:46] "POST / HTTP/1.1" 200 -
 KeyboardInterrupt
 PS C:\Users\aluno\Downloads\aula\aula4> python .\servidor-rpc.py
+KeyboardInterrupt
+PS C:\Users\aluno\Downloads\aula\aula4> python .\servidor-rpc.py
+127.0.0.1 - - [16/Sep/2026 22:07:26] "POST / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Sep/2026 22:07:28] "POST / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Sep/2026 22:07:30] "POST / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Sep/2026 22:07:32] "POST / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Sep/2026 22:07:34] "POST / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Sep/2026 22:07:48] "POST / HTTP/1.1" 200 -
+KeyboardInterrupt
+PS C:\Users\aluno\Downloads\aula\aula4>
