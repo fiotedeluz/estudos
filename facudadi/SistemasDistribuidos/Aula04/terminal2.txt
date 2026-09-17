@@ -1,0 +1,14 @@
+PS C:\Users\aluno> cd .\Downloads\aula\aula4\
+PS C:\Users\aluno\Downloads\aula\aula4> ls
+
+
+    Diretório: C:\Users\aluno\Downloads\aula\aula4
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        16/09/2026     21:28            226 cliente-rpc.py
+-a----        16/09/2026     21:28            392 servidor-rpc.py
+
+
+PS C:\Users\aluno\Downloads\aula\aula4>
