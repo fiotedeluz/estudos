@@ -2,17 +2,21 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #ffff;
-    color: #0000;
+    background-color: burlywood;
+    color: black;
 }
 
 header{
- padding: ;
+ padding: 16px;
+ margin: 0px;
+ background-color: wheat;
+ text-align: center;
 }
 
 header h1{
     margin: 0;
     font-size: 36px;
+
 }
 
 nav {
@@ -23,7 +27,27 @@ nav {
 }
 
 nav a {
-    color: #ffff;
+    color: black;
     text-decoration: none;
     margin: 15px;
+    padding: 4px;
+
+
+}
+
+section {
+ padding: 16px;
+ margin: 16px;
+
+ background-color: wheat;
+ border-radius: 16px;
+
+}
+
+footer {
+
+    text-align: center;
+    padding: 15px;
+
+
 }
