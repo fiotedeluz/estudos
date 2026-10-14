@@ -1,0 +1,204 @@
+
+# introdusao ao tema: kubernets
+. iniciando os primeiros passos e entendendo mais sobre supervisionar e manutenir conteiners 
+
+. a primeiro momento conferir a presença do sistema e analisando seus comandos basicos
+"""
+root@controlplane:~$ kubectl version --client
+Client Version: v1.37.1
+Kustomize Version: v5.8.1
+root@controlplane:~$ kubectl
+kubectl controls the Kubernetes cluster manager.
+
+ Find more information at: https://kubernetes.io/docs/reference/kubectl/
+
+Basic Commands (Beginner):
+  create          Create a resource from a file or from stdin
+  expose          Take a replication controller, service, deployment or pod and expose it as a new Kubernetes service
+  run             Run a particular image on the cluster
+  set             Set specific features on objects
+
+Basic Commands (Intermediate):
+  explain         Get documentation for a resource
+  get             Display one or many resources
+  edit            Edit a resource on the server
+  delete          Delete resources by file names, stdin, resources and names, or by resources and label selector
+
+Deploy Commands:
+  rollout         Manage the rollout of a resource
+  scale           Set a new size for a deployment, replica set, or replication controller
+  autoscale       Auto-scale a deployment, replica set, stateful set, or replication controller
+
+Cluster Management Commands:
+  certificate     Modify certificate resources
+  cluster-info    Display cluster information
+  top             Display resource (CPU/memory) usage
+  cordon          Mark node as unschedulable
+  uncordon        Mark node as schedulable
+  drain           Drain node in preparation for maintenance
+  taint           Update the taints on one or more nodes
+
+Troubleshooting and Debugging Commands:
+  describe        Show details of a specific resource or group of resources
+  logs            Print the logs for a container in a pod
+  attach          Attach to a running container
+  exec            Execute a command in a container
+  port-forward    Forward one or more local ports to a pod
+  proxy           Run a proxy to the Kubernetes API server
+  cp              Copy files and directories to and from containers
+  auth            Inspect authorization
+  debug           Create debugging sessions for troubleshooting workloads and nodes
+  events          List events
+
+Advanced Commands:
+  diff            Diff the live version against a would-be applied version
+  apply           Apply a configuration to a resource by file name or stdin
+  patch           Update fields of a resource
+  replace         Replace a resource by file name or stdin
+  wait            Wait for a specific condition on one or many resources
+  kustomize       Build a kustomization target from a directory or URL
+
+Settings Commands:
+  label           Update the labels on a resource
+  annotate        Update the annotations on a resource
+  completion      Output shell completion code for the specified shell (bash, zsh, fish, or powershell)
+
+Subcommands provided by plugins:
+
+Other Commands:
+  api-resources   Print the supported API resources on the server
+  api-versions    Print the supported API versions on the server, in the form of "group/version"
+  config          Modify kubeconfig files
+  kuberc          Manage kuberc configuration files
+  plugin          Provides utilities for interacting with plugins
+  version         Print the client and server version information
+
+Usage:
+  kubectl [flags] [options]
+
+Use "kubectl <command> --help" for more information about a given command.
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+root@controlplane:~$
+"""
+
+
+. breve teste para localizar o pod e então fazer uma analise mais profunda com -o (-o = --output) wide 
+"""
+root@controlplane:~$ kubectl get nodes
+NAME           STATUS   ROLES           AGE   VERSION
+controlplane   Ready    control-plane   9d    v1.37.1
+node01         Ready    <none>          9d    v1.37.1
+root@controlplane:~$ 
+root@controlplane:~$ kubectl create deployment aula5 --image=nginx:alpine
+deployment.apps/aula5 created
+root@controlplane:~$ 
+root@controlplane:~$ kubectl get deployment
+NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+aula5   1/1     1            1           38s
+root@controlplane:~$ 
+root@controlplane:~$ kubectl create deployment webaula5 --image=nginx:alpine
+deployment.apps/webaula5 created
+root@controlplane:~$ kubectl get deployment
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+aula5      1/1     1            1           4m23s
+webaula5   1/1     1            1           20s
+root@controlplane:~$ kubectl delete webaula5 ##lembrar de especificar tipagem
+error: the server doesn't have a resource type "webaula5"
+root@controlplane:~$ kubectl delete deployment webaula5
+deployment.apps "webaula5" deleted from default namespace
+root@controlplane:~$ kubectl get deployment 
+NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+aula5   1/1     1            1           5m52s
+root@controlplane:~$ 
+"""
+. testes iniciais para criar, vizualuzar e excluir um deploy
+
+"""
+root@controlplane:~$ kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+aula5-57658f54ff-ctxbb   1/1     Running   0          114s
+root@controlplane:~$ 
+kubectl get pod -o wide
+NAME                     READY   STATUS    RESTARTS   AGE     IP             NODE     NOMINATED NODE   READINESS GATES
+aula5-57658f54ff-ctxbb   1/1     Running   0          7m47s   192.168.1.43   node01   <none>           <none>
+root@controlplane:~$ 
+
+"""
+
+. segue dado um comando para investigar ainda mais a fundo separado simplesmente pela esmagadora quantidade de informação
+"""
+root@controlplane:~$ kubectl describe pod $(kubectl get pods -o jsonpath='{.items[0].metadata.name}')
+Name:             aula5-57658f54ff-ctxbb
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             node01/172.30.2.2
+Start Time:       Wed, 14 Oct 2026 23:25:03 +0000
+Labels:           app=aula5
+                  pod-template-hash=57658f54ff
+Annotations:      <none>
+Status:           Running
+IP:               192.168.1.43
+IPs:
+  IP:           192.168.1.43
+Controlled By:  ReplicaSet/aula5-57658f54ff
+Containers:
+  nginx:
+    Container ID:   containerd://b7a53165a85033eaccdd95e0746a78a9a407a84b0881d8d512527a19bd4fa58b
+    Image:          nginx:alpine
+    Image ID:       docker.io/library/nginx@sha256:72aeb3308ef6cb3118242fb16389518923916dfa206e32d1a8377acc328b9870
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Wed, 14 Oct 2026 23:25:12 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-g8lbt (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-g8lbt:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  12m   default-scheduler  Successfully assigned default/aula5-57658f54ff-ctxbb to node01
+  Normal  Pulling    12m   kubelet            spec.containers{nginx}: Pulling image "nginx:alpine"
+  Normal  Pulled     12m   kubelet            spec.containers{nginx}: Successfully pulled image "nginx:alpine" in 5.431s (5.431s including waiting). Image size: 28826677 bytes.
+  Normal  Created    12m   kubelet            spec.containers{nginx}: Container created
+  Normal  Started    12m   kubelet            spec.containers{nginx}: Container started
+"""
+
+. agora executar alguns comandos simples para criar escalabilidade da "aplicação"
+. comando de deploy para o aula5 criando 3 replicas
+
+"""
+root@controlplane:~$ kubectl scale deployment aula5 --replicas=3
+deployment.apps/aula5 scaled
+root@controlplane:~$ kubectl get pod -o wide
+NAME                     READY   STATUS    RESTARTS   AGE   IP              NODE           NOMINATED NODE   READINESS GATES
+aula5-57658f54ff-ctxbb   1/1     Running   0          31m   192.168.1.43    node01         <none>           <none>
+aula5-57658f54ff-m4zgc   1/1     Running   0          21s   192.168.1.218   node01         <none>           <none>
+aula5-57658f54ff-szhkt   1/1     Running   0          21s   192.168.0.210   controlplane   <none>           <none>
+root@controlplane:~$
+"""
+
+
+"""
+
+"""
