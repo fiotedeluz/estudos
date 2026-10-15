@@ -23,3 +23,10 @@ for t in threads:
 
 print("Saldo esperado: 500")
 print("Saldo obtido:", saldo)
+
+## segue o resultado do terminal
+#fiotedeluz ➜ .../facudadi/SistemasDistribuidos/aula005/corrida (main) $ python3 corrida.py 
+#Saldo esperado: 500
+#Saldo obtido: 950
+#@fiotedeluz ➜ .../facudadi/SistemasDistribuidos/aula005/corrida (main) $ 
+##
