@@ -310,7 +310,8 @@ pod "teste" deleted from default namespace
 root@controlplane:~$ 
 """
 
-. 
+. execução do desafio proposto no fim da aula
+. executada um aumento dos deploy's automatizados e exclui o primeiro mantendo o serviço ativo
 """
 root@controlplane:~$ kubectl scale deployment aula5 --replicas=5
 deployment.apps/aula5 scaled
@@ -333,7 +334,8 @@ aula5-57658f54ff-szhkt   1/1     Running   0          15m
 root@controlplane:~$
 """
 
-.limpeza 
+.limpeza dos projetos executados em sala
+
 """
 root@controlplane:~$ kubectl delete service  web-service
 service "web-service" deleted from default namespace
