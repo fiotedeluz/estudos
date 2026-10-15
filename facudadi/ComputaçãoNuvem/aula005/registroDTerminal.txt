@@ -198,7 +198,38 @@ aula5-57658f54ff-szhkt   1/1     Running   0          21s   192.168.0.210   cont
 root@controlplane:~$
 """
 
+. segue mais um comando para verificar os deploy's a configuração de replicação criada acima e então quantos pods estão ativos
+"""
+root@controlplane:~$ kubectl get deployment,replicaset,pods
+NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/aula5   3/3     3            3           33m
 
+NAME                               DESIRED   CURRENT   READY   AGE
+replicaset.apps/aula5-57658f54ff   3         3         3       33m
+
+NAME                         READY   STATUS    RESTARTS   AGE
+pod/aula5-57658f54ff-ctxbb   1/1     Running   0          33m
+pod/aula5-57658f54ff-m4zgc   1/1     Running   0          2m26s
+pod/aula5-57658f54ff-szhkt   1/1     Running   0          2m26s
+root@controlplane:~$ 
 """
 
+. segue uma demonstração pratica do processo automatizado
+. usei o comando delete especificando o primeiro pod da lista e o excluindo
+. fiz então uma verificação dos pods ativos permitindo vizualizar que seguem 3 pods como definido anteriormente
+"""
+root@controlplane:~$ kubectl get pod
+NAME                     READY   STATUS    RESTARTS   AGE
+aula5-57658f54ff-ctxbb   1/1     Running   0          35m
+aula5-57658f54ff-m4zgc   1/1     Running   0          4m28s
+aula5-57658f54ff-szhkt   1/1     Running   0          4m28s
+root@controlplane:~$ 
+root@controlplane:~$ kubectl delete pod $(kubectl get pods -o jsonpath='{.items[0].metadata.name}')
+pod "aula5-57658f54ff-ctxbb" deleted from default namespace
+root@controlplane:~$ kubectl get pod
+NAME                     READY   STATUS    RESTARTS   AGE
+aula5-57658f54ff-fpr29   1/1     Running   0          16s
+aula5-57658f54ff-m4zgc   1/1     Running   0          4m52s
+aula5-57658f54ff-szhkt   1/1     Running   0          4m52s
+root@controlplane:~$ 
 """
