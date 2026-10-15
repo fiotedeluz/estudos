@@ -233,3 +233,103 @@ aula5-57658f54ff-m4zgc   1/1     Running   0          4m52s
 aula5-57658f54ff-szhkt   1/1     Running   0          4m52s
 root@controlplane:~$ 
 """
+
+.
+"""
+root@controlplane:~$ kubectl expose deployment aula5 --port=80 --target-port=80 --name=web-service
+service/web-service exposed
+root@controlplane:~$ kubectl get service web-service
+NAME          TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)   AGE
+web-service   ClusterIP   10.100.3.33   <none>        80/TCP    10s
+root@controlplane:~$ 
+"""
+
+.
+"""
+root@controlplane:~$ ^C
+root@controlplane:~$ kubectl run teste --image=curlimages/curl --rm -it --restart=Never -- \
+  curl http://web-service
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, nginx is successfully installed and working.
+Further configuration is required for the web server, reverse proxy, 
+API gateway, load balancer, content cache, or other features.</p>
+
+<p>For online documentation and support please refer to
+<a href="https://nginx.org/">nginx.org</a>.<br/>
+To engage with the community please visit
+<a href="https://community.nginx.org/">community.nginx.org</a>.<br/>
+For enterprise grade support, professional services, additional 
+security features and capabilities please refer to
+<a href="https://f5.com/nginx">f5.com/nginx</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+All commands and output from this session will be recorded in container logs, including credentials and sensitive information passed through the command prompt.
+If you don't see a command prompt, try pressing enter.
+warning: couldn't attach to pod/teste, falling back to streaming logs: unable to upgrade connection: container teste not found in pod teste_default
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, nginx is successfully installed and working.
+Further configuration is required for the web server, reverse proxy, 
+API gateway, load balancer, content cache, or other features.</p>
+
+<p>For online documentation and support please refer to
+<a href="https://nginx.org/">nginx.org</a>.<br/>
+To engage with the community please visit
+<a href="https://community.nginx.org/">community.nginx.org</a>.<br/>
+For enterprise grade support, professional services, additional 
+security features and capabilities please refer to
+<a href="https://f5.com/nginx">f5.com/nginx</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+pod "teste" deleted from default namespace
+root@controlplane:~$ 
+"""
+
+.
+"""
+root@controlplane:~$ kubectl scale deployment aula5 --replicas=5
+deployment.apps/aula5 scaled
+root@controlplane:~$ kubectl get pod 
+NAME                     READY   STATUS    RESTARTS   AGE
+aula5-57658f54ff-95b7l   1/1     Running   0          14s
+aula5-57658f54ff-fpr29   1/1     Running   0          10m
+aula5-57658f54ff-m4zgc   1/1     Running   0          15m
+aula5-57658f54ff-q9578   1/1     Running   0          14s
+aula5-57658f54ff-szhkt   1/1     Running   0          15m
+root@controlplane:~$ kubectl delete pod $(kubectl get pods -o jsonpath='{.items[0].metadata.name}')
+pod "aula5-57658f54ff-95b7l" deleted from default namespace
+root@controlplane:~$ kubectl get pod
+NAME                     READY   STATUS    RESTARTS   AGE
+aula5-57658f54ff-fpr29   1/1     Running   0          10m
+aula5-57658f54ff-fwws2   1/1     Running   0          5s
+aula5-57658f54ff-m4zgc   1/1     Running   0          15m
+aula5-57658f54ff-q9578   1/1     Running   0          30s
+aula5-57658f54ff-szhkt   1/1     Running   0          15m
+root@controlplane:~$
+"""
+
