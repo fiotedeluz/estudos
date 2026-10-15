@@ -234,7 +234,7 @@ aula5-57658f54ff-szhkt   1/1     Running   0          4m52s
 root@controlplane:~$ 
 """
 
-.
+. criamos uma porta fixa para o deploy da nossa aplicação e chamamos esse serviço de web-service
 """
 root@controlplane:~$ kubectl expose deployment aula5 --port=80 --target-port=80 --name=web-service
 service/web-service exposed
@@ -244,9 +244,9 @@ web-service   ClusterIP   10.100.3.33   <none>        80/TCP    10s
 root@controlplane:~$ 
 """
 
-.
+.criei uma imagem teste para nela executar um curl e ler oque ha dentro do nginx:alpine padrão e excluir esse pod em seguida
 """
-root@controlplane:~$ ^C
+root@controlplane:~$
 root@controlplane:~$ kubectl run teste --image=curlimages/curl --rm -it --restart=Never -- \
   curl http://web-service
 <!DOCTYPE html>
@@ -310,7 +310,7 @@ pod "teste" deleted from default namespace
 root@controlplane:~$ 
 """
 
-.
+. 
 """
 root@controlplane:~$ kubectl scale deployment aula5 --replicas=5
 deployment.apps/aula5 scaled
@@ -333,3 +333,16 @@ aula5-57658f54ff-szhkt   1/1     Running   0          15m
 root@controlplane:~$
 """
 
+.limpeza 
+"""
+root@controlplane:~$ kubectl delete service  web-service
+service "web-service" deleted from default namespace
+root@controlplane:~$ kubectl delete deployment aula5
+deployment.apps "aula5" deleted from default namespace
+root@controlplane:~$ kubectl get pod 
+No resources found in default namespace.
+root@controlplane:~$ kubectl get services
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   9d
+root@controlplane:~$ 
+"""
