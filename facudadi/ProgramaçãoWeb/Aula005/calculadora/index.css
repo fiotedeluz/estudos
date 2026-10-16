@@ -1,10 +1,81 @@
 
 body {
-    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: blue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 
 }
 
-div.buttons {
+.calculadora {
+    width: 50vh;
+    background-color: gray;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px rgba(0, 0, 0, 5);
+    text-align: center;
 
-        background-color: black;
+}
+
+#display {
+    width: 100%;
+    height: 15px;
+    background-color: green;
+    color: white;
+    text-align: right;
+    font-size: 2,5rem;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+
+}
+
+.btn {
+    width: 100%;
+    height: 50px;
+    font-size: 1,5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: pink;
+    color: gray;
+    transition: transform 0.1s, box-shadow 0.1s;
+
+}
+
+.btn.operator {
+    background-color: orange;
+
+
+}
+
+#clear {
+    background-color: tan;
+    color: black;
+}
+
+#calculate {
+    grid-column: span 4;
+    background-color: orange;
+    color: black;
+
+}
+
+.btn:active {
+    transform: scale(0.95);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 5);
 }
